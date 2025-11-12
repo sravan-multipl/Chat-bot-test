@@ -89,20 +89,21 @@ function appendBotResponse(text, placeholder) {
 
 // ---- Connection Checker ----
 async function checkConnection() {
-  try {
-    const res = await fetch(HEALTH_URL, { method: "GET" });
-    if (res.ok) {
-      const data = await res.json();
-      if (data.status === "ok") {
+    try {
+      const res = await fetch(HEALTH_URL, { method: "GET" });
+      console.log("Health check:", res.status, await res.text());
+  
+      if (res.ok) {
+        // If the backend responds 200, we consider it "online"
         updateConnectionStatus(true);
-        return;
+      } else {
+        updateConnectionStatus(false);
       }
+    } catch (err) {
+      console.error("Health check failed:", err);
+      updateConnectionStatus(false);
     }
-    updateConnectionStatus(false);
-  } catch (err) {
-    updateConnectionStatus(false);
-  }
-}
+  }  
 
 // ---- Update UI for Connection ----
 function updateConnectionStatus(isOnline) {
