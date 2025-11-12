@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <h2>💬 AI Chatbot</h2>
+      <h4 id="user-label">👤 User: PVWDYU</h4>
+
+      <!-- ✅ Chat messages -->
+      <div id="chat-box" class="chat-box"></div>
+
+      <!-- ✅ Input area -->
+      <div class="input-area">
+        <input
+          id="user-input"
+          type="text"
+          placeholder="Type a message..."
+          autocomplete="off"
+        />
+        <button id="send-btn">Send</button>
+      </div>
+
+      <!-- ✅ Intent example buttons (at the bottom now) -->
+      <div id="intent-buttons" class="intent-buttons">
+        <button data-text="show me all my goals">🎯 Goal List</button>
+        <button data-text="what is my total goal amount?">💰 Goal Amount Total</button>
+        <button data-text="how many sips for my recent goal?">📊 Recent Goal SIP Count</button>
+        <button data-text="how much sip paid for my recent goal?">✅ Recent Goal SIP Paid</button>
+        <button data-text="details for IXIGO TRAVEL GOAL">📘 Goal By Name</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
