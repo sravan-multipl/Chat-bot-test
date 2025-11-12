@@ -91,7 +91,6 @@ function appendBotResponse(text, placeholder) {
 async function checkConnection() {
     try {
       const res = await fetch(HEALTH_URL, { method: "GET" });
-      console.log("Health check:", res.status, await res.text());
   
       if (res.ok) {
         // If the backend responds 200, we consider it "online"
