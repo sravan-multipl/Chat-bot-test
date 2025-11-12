@@ -46,9 +46,15 @@ body {
   
   .bot {
     background: #f1f3f5;
-    color: #333;
+    color: #222;
     align-self: flex-start;
-    white-space: pre-wrap; /* preserve spacing */
+    white-space: normal; /* allow line wrapping */
+    line-height: 1.4;
+  }
+  
+  .bot strong {
+    font-weight: 600;
+    color: #000;
   }  
   
   .input-area {

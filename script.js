@@ -67,12 +67,18 @@ function appendMessage(role, text) {
     const msg = document.createElement("div");
     msg.classList.add("message", role);
   
-    // Convert markdown-like syntax to HTML
+    // --- Markdown formatting ---
     let formatted = text
-      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
-      .replace(/\n/g, "<br>"); // line breaks
+      // Convert **bold** → <strong>
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      // Convert numbered lists like 1. item → <br>1. item
+      .replace(/(\d+\.\s)/g, "<br>$1")
+      // Convert dashes to new lines for readability
+      .replace(/-\s/g, " - ")
+      // Convert newlines to <br>
+      .replace(/\n/g, "<br>");
   
-    msg.innerHTML = formatted;
+    msg.innerHTML = formatted.trim();
     chatBox.appendChild(msg);
     chatBox.scrollTop = chatBox.scrollHeight;
   }
