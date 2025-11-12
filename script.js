@@ -64,9 +64,17 @@ async function sendMessage() {
 }
 
 function appendMessage(role, text) {
-  const msg = document.createElement("div");
-  msg.classList.add("message", role);
-  msg.textContent = text;
-  chatBox.appendChild(msg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
+    const msg = document.createElement("div");
+    msg.classList.add("message", role);
+  
+    // Convert markdown-like syntax to HTML
+    let formatted = text
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
+      .replace(/\n/g, "<br>"); // line breaks
+  
+    msg.innerHTML = formatted;
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+  
+  
